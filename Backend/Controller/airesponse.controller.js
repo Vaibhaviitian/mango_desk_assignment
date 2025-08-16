@@ -7,7 +7,7 @@ const getAiResponse = async (req, res) => {
       apiKey: `${process.env.GROQ_API_KEY}`,
     });
     const { text } = req.body;
-    console.log(text);
+    // console.log(text);
     if (!text) {
       return res
         .status(400)

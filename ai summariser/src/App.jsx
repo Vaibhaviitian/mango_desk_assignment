@@ -49,7 +49,6 @@ function App() {
   ];
   const handleemail = async () => {
     try {
-      console.log(recipientEmail);
       setIsSending(true);
   
       if (!recipientEmail || !airesponse) {
@@ -103,13 +102,11 @@ function App() {
     const payload = {
       text: text + (customPrompt ? `\n\nInstruction: ${customPrompt}` : ""),
     };
-    console.log(import.meta.env.VITE_BACKEND_URL);
     const summarisePromise = axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/apiresponse`, payload)
       .then((response) => {
         setaiResponse(response.data.summary);
         setEditableResponse(response.data.summary);
-        console.log(response.data.summary); 
         return "Summary generated successfully!";
       })
       .catch((error) => {
